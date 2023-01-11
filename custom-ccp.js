@@ -39,15 +39,15 @@ function init() {
                 var attributeMap = contact.getAttributes();
                 var customerName = attributeMap["CustomerName"]["value"];
                 var phoneNumber = attributeMap["PhoneNumber"]["value"];
-                // var agentNumber = attributeMap["agentNumber"]["value"];
-                // var queue = attributeMap["queue"]["value"];
-                // var availableAgent = attributeMap["availableAgent"]["value"];
+                var agentNumber = attributeMap["agentNumber"]["value"];
+                var queue = attributeMap["queue"]["value"];
+                var availableAgent = attributeMap["availableAgent"]["value"];
 
                 console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
                 console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
-                // console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
-                // console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
-                // console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
+                console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
+                console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+                console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
 
                 // 名前・電話番号の表示欄に値を表示する
                 if (phoneNumber == 'anonymous' || phoneNumber == '') {
