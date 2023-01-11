@@ -6,9 +6,9 @@ function init() {
     var ccpDiv = document.getElementById("ccp");
     var nameDiv = document.getElementById("name");
     var phoneDiv = document.getElementById("phone");
-    // var agentNumberDiv = document.getElementById("agentNumber");
-    // var queueDiv = document.getElementById("queue");
-    // var availableAgentDiv = document.getElementById("availableAgent");
+    var agentNumberDiv = document.getElementById("agentNumber");
+    var queueDiv = document.getElementById("queue");
+    var availableAgentDiv = document.getElementById("availableAgent");
 
     // CCPの初期化
     connect.core.initCCP(ccpDiv, {
