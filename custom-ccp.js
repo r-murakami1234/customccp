@@ -8,7 +8,7 @@ function init() {
     var phoneDiv = document.getElementById("phone");
     var agentNumberDiv = document.getElementById("agentNumber");
     var queueDiv = document.getElementById("queue");
-    var availableAgentDiv = document.getElementById("availableAgent");
+    // var availableAgentDiv = document.getElementById("availableAgent");
 
     // CCPの初期化
     connect.core.initCCP(ccpDiv, {
@@ -27,6 +27,13 @@ function init() {
         }
     });
 
+    // 電話番号に書き込み
+    function writePhone(message) {
+        var phone = document.getElementById('phone');
+        var text = phone.value;
+        phone.value = text + message;
+    };
+
     // イベントサブスクリプション
     // Contactイベント
     connect.contact(function (contact) {
@@ -34,6 +41,10 @@ function init() {
         contact.onConnecting(function (contact) {
             // 着信時の場合のみ
             if (contact.isInbound()) {
+                var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
+	
+                // 着信時に電話番号表示
+                writePhone('contact.getActiveInitialConnection().getEndpoint().phoneNumber = ' + phoneNumber + '\n');
                 console.log('通話着信: contactId =' + contact.getContactId() + '\n');
                 // コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
                 var attributeMap = contact.getAttributes();
@@ -78,9 +89,9 @@ function init() {
             // 名前・電話番号の表示欄をクリアする
             nameDiv.innerHTML = ''
             phoneDiv.innerHTML = ''
-            agentNumberDiv.innerHTML = ''
-            queueDiv.innerHTML = ''
-            availableAgentDiv.innerHTML = ''
+            // agentNumberDiv.innerHTML = ''
+            // queueDiv.innerHTML = ''
+            // availableAgentDiv.innerHTML = ''
         });
     });
 }
