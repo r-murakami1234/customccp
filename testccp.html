@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="custom-ccp.css">
+    <script type="text/javascript" src="connect-streams-min.js"></script>
+    <script type="text/javascript" src="custom-ccp.js"></script>
+    <title>Amazon Connect Contact Control Panel</title>
+</head>
+
+<body onload="init()">
+    <div class="parent">
+        <div class="caption" id="name-cap">名前</div>
+        <div class="content" id="name"></div>
+        <div class="caption" id="phone-cap">電話番号</div>
+        <div class="content" id="phone"></div>
+        <div class="caption" id="agentNumber-cap">ダイヤル番号</div>
+        <div class="content" id="agentNumber"></div>
+        <div class="caption" id="queue-cap">窓口</div>
+        <div class="content" id="queue"></div>
+        <div class="caption" id="availableAgent-cap">転送可能</div>
+        <div class="content" id="availableAgent"></div>
+        <div class="ccp" id="ccp"></div>
+    </div>
+</body>
+
+</html>
