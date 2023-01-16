@@ -32,14 +32,14 @@ function init() {
     connect.contact(function (contact) {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
 			var conn = contact.getActiveInitialConnection();
-			var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
-			var queue = contact.getQueue().name
 		}
 		
 		// 着信または発信が発生した時のイベント
          contact.onConnecting(function (contact) {
         	// 着信時の場合のみ
 			if (contact.isInbound()) {
+				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
+				var queue = contact.getQueue().name	
 				// console.log('通話着信: contactId =' + contact.getContactId() + '\n');
 				// コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
 				// var attributeMap = contact.getAttributes();
