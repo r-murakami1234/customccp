@@ -44,7 +44,7 @@ function init() {
 			if (contact.isInbound()) {
 				// console.log('通話着信: contactId =' + contact.getContactId() + '\n');
 				// コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
-				// var attributeMap = contact.getAttributes();
+				 var attributeMap = contact.getAttributes();
 				// var customerName = attributeMap["CustomerName"]["value"];
 				// var phoneNumber = attributeMap["PhoneNumber"]["value"];
 				// var agentNumber = attributeMap["agentNumber"]["value"];
@@ -52,9 +52,9 @@ function init() {
 				// var availableAgent = attributeMap["availableAgent"]["value"];
 
 				// console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
-				// console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
+				 console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
 				// console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
-				// console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+				 console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
 				// console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
 
 				// 名前・電話番号の表示欄に値を表示する
