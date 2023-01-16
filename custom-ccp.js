@@ -53,28 +53,24 @@ function init() {
 				 console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
 				// console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
 				 console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
-				// console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
-
+				
 				// 名前・電話番号の表示欄に値を表示する
-				if (phoneNumber == 'anonymous' || phoneNumber == '') {
-					nameDiv.innerHTML = '(番号非通知)'
-					phoneDiv.innerHTML = '―'
-					// agentNumberDiv.innerHTML = agentNumber
-					queueDiv.innerHTML = queue
-					// availableAgentDiv.innerHTML = availableAgent
-				} else if (customerName == '') {
-					nameDiv.innerHTML = '(登録されていません)'
-					phoneDiv.innerHTML = phoneNumber
-					// agentNumberDiv.innerHTML = agentNumber
-					queueDiv.innerHTML = queue
-					// availableAgentDiv.innerHTML = availableAgent
-				} else {
-					nameDiv.innerHTML = customerName
-					phoneDiv.innerHTML = phoneNumber
-					// agentNumberDiv.innerHTML = agentNumber
-					queueDiv.innerHTML = queue
-					// availableAgentDiv.innerHTML = availableAgent
-				}
+				phoneDiv.innerHTML = phoneNumber
+				queueDiv.innerHTML = queue
+
+				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
+				// 	nameDiv.innerHTML = '(番号非通知)'
+				// 	phoneDiv.innerHTML = '―'
+				// 	queueDiv.innerHTML = queue
+				// } else if (customerName == '') {
+				// 	nameDiv.innerHTML = '(登録されていません)'
+				// 	phoneDiv.innerHTML = phoneNumber
+				// 	queueDiv.innerHTML = queue
+				// } else {
+				// 	nameDiv.innerHTML = customerName
+				// 	phoneDiv.innerHTML = phoneNumber
+				// 	queueDiv.innerHTML = queue
+				// }
 			}
 		});
 		// 通話を切断した時のイベント
