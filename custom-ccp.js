@@ -1,114 +1,92 @@
-//CCPのURLを設定する
-var ccpUrl = "https://test-dev-001.my.connect.aws/ccp-v2";
+custom-ccp.js 
 
-//CCPをロードする
-connect.core.initCCP(containerDiv, {
-	ccpUrl: ccpUrl,        
-	loginPopup: true,          
-	softphone: {              
-	  disableRingtone: true, 
-	  ringtoneUrl: null,
-	  allowFramedSoftphone: true 
-	   }
-	});
+// Amazon Connect Streams APIの初期化処理
+function init() {
+    // CCPのURL (Connectインスタンス名の部分を御自身のものに置き換えてください)
+    var instanceURL = "https://test-dev-001.my.connect.aws/ccp-v2";
 
-//画面上のテキストエリアにログ出力する
-function writeLog(message) {
-	var logtextarea = document.getElementById('logtextarea');
-	var text = logtextarea.value;
-	logtextarea.value = text + message;
-};
+    var ccpDiv = document.getElementById("ccp");
+    var nameDiv = document.getElementById("name");
+    var phoneDiv = document.getElementById("phone");
+    // var agentNumberDiv = document.getElementById("agentNumber");
+    var queueDiv = document.getElementById("queue");
+    // var availableAgentDiv = document.getElementById("availableAgent");
 
-//エージェントイベントのサブスクライブ設定
-connect.agent(function(agent) {
-	writeLog('エージェントイベントのサブスクライブ（connect.agent）!\n');
-	writeLog('エージェントの基本情報の表示\n');
+    // CCPの初期化
+    connect.core.initCCP(ccpDiv, {
+        ccpUrl: instanceURL,          // CCPのURLを指定 (必須項目)
+        loginPopup: true,             // 必要時にログインダイアログを自動的にポップアップする
+        loginPopupAutoClose: true,    // ログイン後にログインダイアログを自動的に閉じる
+        loginOptions: {               // ログインダイアログをポップアップする際の設定
+            autoClose: true,
+            height: 750,
+            width: 400,
+            top: 0,
+            left: 0
+        },
+        softphone: {                      // ソフトフォンの設定
+            allowFramedSoftphone: true    // ソフトフォンのコンポーネントをiframeで埋め込むことを許可する
+        }
+    });
 
-	//基本情報の表示
-	var routingProfile = agent.getRoutingProfile();
-	writeLog('routingProfile.name = ' + routingProfile.name + '\n');
-	writeLog('routingProfile.queues = ' + JSON.stringify(routingProfile.queues) + '\n');
-	writeLog('routingProfile.defaultOutboundQueue = ' + JSON.stringify(routingProfile.defaultOutboundQueue) + '\n');
-
-	var name = agent.getName();
-	writeLog('name = ' + name + '\n');
-	
-	var extension = agent.getExtension();
-	writeLog('extension = ' + extension + '\n');
-
-
-	//エージェントが受付可になったイベント
-	agent.onRoutable(function(agent) {
-		writeLog('エージェントが受付可になった（agent.onRoutable）!\n');
-	});
-
-	//エージェントが受付可ではなくなったイベント
-	agent.onNotRoutable(function(agent) {
-		writeLog('エージェントが受付可ではなくなった（agent.onNotRoutable）!\n');
-	});
-
-	//エージェントがオフラインになったイベント
-	agent.onOffline(function(agent) {
-		writeLog('エージェントがオフラインになった（agent.onOffline）!\n');
-	});
-
-	//エージェントがACWになったイベント
-	agent.onAfterCallWork(function(agent) {
-		writeLog('エージェントがACWになった（agent.onAfterCallWork）!\n');
-	});
-});
-
-
-//コンタクトイベントのサブスクライブ設定
-connect.contact(function(contact) {
-	//有効なコネクションがあるかどうかチェック
-	if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
-		var conn = contact.getActiveInitialConnection();
-		var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
-	}
-
-	writeLog('コンタクトイベントのサブスクライブ（connect.contact）!\n' );
-	writeLog('contact.getActiveInitialConnection().getEndpoint().phoneNumber = ' + phoneNumber + '\n');
-	writeLog('contact.getQueue().name = ' + contact.getQueue().name + '\n');
-	writeLog('initialConn.getType() = ' + conn.getType() + '\n');
-
-
-	//コンタクト情報がリフレッシュされたイベント
-	contact.onRefresh(function(contact) {
-		writeLog('コンタクト情報がリフレッシュされた（connect.onRefresh）!\n');
-
-		//コンタクトのコネクションを確認する
-		var conns = contact.getConnections();
-		writeLog('コンタクトのコネクション = ' + JSON.stringify(conns) + '\n');
-		
-		//保留中かどうかチェックする
-		var conn = contact.getActiveInitialConnection();
-		if (conn.isOnHold()) {
-			writeLog('保留中です!\n');
+    // イベントサブスクリプション
+    // Contactイベント
+    connect.contact(function (contact) {
+		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
+			var conn = contact.getActiveInitialConnection();
+			var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 		}
-	});
+        // 着信または発信が発生した時のイベント
+        contact.onConnecting(function (contact) {
+            // 着信時の場合のみ
+            if (contact.isInbound()) {
+                // console.log('通話着信: contactId =' + contact.getContactId() + '\n');
+                // コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
+                // var attributeMap = contact.getAttributes();
+                // var customerName = attributeMap["CustomerName"]["value"];
+                // var phoneNumber = attributeMap["PhoneNumber"]["value"];
+                // var agentNumber = attributeMap["agentNumber"]["value"];
+                // var queue = attributeMap["queue"]["value"];
+                // var availableAgent = attributeMap["availableAgent"]["value"];
 
-	//コールが着信したイベント
-	contact.onIncoming(function(contact) {
-		writeLog('コールが着信した（connect.onIncoming）!\n');
-		writeLog('contactId =' + contact.getContactId() + '\n');
-	});
+                // console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
+                // console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
+                // console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
+                // console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+                // console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
 
-	//コールに応答したイベント
-	contact.onAccepted(function(contact) {
-		writeLog('コールに応答した（connect.onAccepted）!\n');	
-		writeLog('contactId =' + contact.getContactId() + '\n');
-	});
+                // 名前・電話番号の表示欄に値を表示する
+                if (phoneNumber == 'anonymous' || phoneNumber == '') {
+                    nameDiv.innerHTML = '(番号非通知)'
+                    phoneDiv.innerHTML = '―'
+                    // agentNumberDiv.innerHTML = agentNumber
+                    // queueDiv.innerHTML = queue
+                    // availableAgentDiv.innerHTML = availableAgent
+                } else if (customerName == '') {
+                    nameDiv.innerHTML = '(登録されていません)'
+                    phoneDiv.innerHTML = phoneNumber
+                    // agentNumberDiv.innerHTML = agentNumber
+                    // queueDiv.innerHTML = queue
+                    // availableAgentDiv.innerHTML = availableAgent
+                } else {
+                    nameDiv.innerHTML = customerName
+                    phoneDiv.innerHTML = phoneNumber
+                    // agentNumberDiv.innerHTML = agentNumber
+                    // queueDiv.innerHTML = queue
+                    // availableAgentDiv.innerHTML = availableAgent
+                }
+            }
+        });
 
-	//コールが切断された（もしくは切断した）イベント
-	contact.onEnded(function(contact) {
-		writeLog('コールが切断された（もしくは切断した）（connect.onEnded）!\n');	
-		writeLog('contactId =' + contact.getContactId() + '\n');			
-	});	
-
-	//コールが確立されたイベント
-	contact.onConnected(function() {
-		writeLog('コールが確立された（connect.onConnected）!\n');
-		writeLog('contactId =' + contact.getContactId() + '\n');					
-	});
-});
+        // 通話を切断した時のイベント
+        contact.onEnded(function (contact) {
+            console.log('通話切断: contactId =' + contact.getContactId() + '\n');
+            // 名前・電話番号の表示欄をクリアする
+            nameDiv.innerHTML = ''
+            phoneDiv.innerHTML = ''
+            agentNumberDiv.innerHTML = ''
+            queueDiv.innerHTML = ''
+            availableAgentDiv.innerHTML = ''
+        });
+    });
+}
