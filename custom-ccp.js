@@ -1,5 +1,3 @@
-custom-ccp.js 
-
 // Amazon Connect Streams APIの初期化処理
 function init() {
     // CCPのURL (Connectインスタンス名の部分を御自身のものに置き換えてください)
@@ -34,7 +32,7 @@ function init() {
     connect.contact(function (contact) {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
 			var conn = contact.getActiveInitialConnection();
-			var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
+			var phoneNumbe = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 			var queue = contact.getQueue().name
 		}
 		
