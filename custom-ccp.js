@@ -32,7 +32,7 @@ function init() {
     connect.contact(function (contact) {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
 			var conn = contact.getActiveInitialConnection();
-			var phoneNumbe = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
+			var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 			var queue = contact.getQueue().name
 		}
 		
