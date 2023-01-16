@@ -35,58 +35,59 @@ function init() {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
 			var conn = contact.getActiveInitialConnection();
 			var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
+			var queue = contact.getQueue().name
 		}
-        // 着信または発信が発生した時のイベント
-        contact.onConnecting(function (contact) {
-            // 着信時の場合のみ
-            if (contact.isInbound()) {
-                // console.log('通話着信: contactId =' + contact.getContactId() + '\n');
-                // コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
-                // var attributeMap = contact.getAttributes();
-                // var customerName = attributeMap["CustomerName"]["value"];
-                // var phoneNumber = attributeMap["PhoneNumber"]["value"];
-                // var agentNumber = attributeMap["agentNumber"]["value"];
-                // var queue = attributeMap["queue"]["value"];
-                // var availableAgent = attributeMap["availableAgent"]["value"];
+		
+		// 着信または発信が発生した時のイベント
+         contact.onConnecting(function (contact) {
+        	// 着信時の場合のみ
+			if (contact.isInbound()) {
+				// console.log('通話着信: contactId =' + contact.getContactId() + '\n');
+				// コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
+				// var attributeMap = contact.getAttributes();
+				// var customerName = attributeMap["CustomerName"]["value"];
+				// var phoneNumber = attributeMap["PhoneNumber"]["value"];
+				// var agentNumber = attributeMap["agentNumber"]["value"];
+				// var queue = attributeMap["queue"]["value"];
+				// var availableAgent = attributeMap["availableAgent"]["value"];
 
-                // console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
-                // console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
-                // console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
-                // console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
-                // console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
+				// console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
+				// console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
+				// console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
+				// console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+				// console.log('コンタクト属性を取得: availableAgent = \"' + availableAgent + '\"\n');
 
-                // 名前・電話番号の表示欄に値を表示する
-                if (phoneNumber == 'anonymous' || phoneNumber == '') {
-                    nameDiv.innerHTML = '(番号非通知)'
-                    phoneDiv.innerHTML = '―'
-                    // agentNumberDiv.innerHTML = agentNumber
-                    // queueDiv.innerHTML = queue
-                    // availableAgentDiv.innerHTML = availableAgent
-                } else if (customerName == '') {
-                    nameDiv.innerHTML = '(登録されていません)'
-                    phoneDiv.innerHTML = phoneNumber
-                    // agentNumberDiv.innerHTML = agentNumber
-                    // queueDiv.innerHTML = queue
-                    // availableAgentDiv.innerHTML = availableAgent
-                } else {
-                    nameDiv.innerHTML = customerName
-                    phoneDiv.innerHTML = phoneNumber
-                    // agentNumberDiv.innerHTML = agentNumber
-                    // queueDiv.innerHTML = queue
-                    // availableAgentDiv.innerHTML = availableAgent
-                }
-            }
-        });
-
-        // 通話を切断した時のイベント
+				// 名前・電話番号の表示欄に値を表示する
+				if (phoneNumber == 'anonymous' || phoneNumber == '') {
+					nameDiv.innerHTML = '(番号非通知)'
+					phoneDiv.innerHTML = '―'
+					// agentNumberDiv.innerHTML = agentNumber
+					queueDiv.innerHTML = queue
+					// availableAgentDiv.innerHTML = availableAgent
+				} else if (customerName == '') {
+					nameDiv.innerHTML = '(登録されていません)'
+					phoneDiv.innerHTML = phoneNumber
+					// agentNumberDiv.innerHTML = agentNumber
+					queueDiv.innerHTML = queue
+					// availableAgentDiv.innerHTML = availableAgent
+				} else {
+					nameDiv.innerHTML = customerName
+					phoneDiv.innerHTML = phoneNumber
+					// agentNumberDiv.innerHTML = agentNumber
+					queueDiv.innerHTML = queue
+					// availableAgentDiv.innerHTML = availableAgent
+				}
+			}
+		});
+		// 通話を切断した時のイベント
         contact.onEnded(function (contact) {
             console.log('通話切断: contactId =' + contact.getContactId() + '\n');
             // 名前・電話番号の表示欄をクリアする
             nameDiv.innerHTML = ''
             phoneDiv.innerHTML = ''
-            agentNumberDiv.innerHTML = ''
+            // agentNumberDiv.innerHTML = ''
             queueDiv.innerHTML = ''
-            availableAgentDiv.innerHTML = ''
+            // availableAgentDiv.innerHTML = ''
         });
     });
 }
