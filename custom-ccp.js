@@ -62,11 +62,15 @@ function init() {
 						body: raw,
 						redirect: 'follow',
 					};
-				
+
+					
 					resp = fetch(apiURL, requestOptions).then((response) =>
 						response.json()
-					);
-					alert(resp);
+					)
+					.then(response => response.text())
+    				.then(result => {
+					alert(result);
+					})
 				// }
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
