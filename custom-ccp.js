@@ -55,7 +55,7 @@ function init() {
 					const myHeaders = new Headers();	
 					
 					myHeaders.append('Content-Type', 'application/json');
-					const raw = JSON.stringify({ 'PhoneNumber': phoneNumber });
+					const raw = JSON.stringify({"PhoneNumber": phoneNumber });
 					requestOptions = {
 						method: 'POST',
 						headers: myHeaders,
@@ -64,13 +64,10 @@ function init() {
 					};
 
 					
-					resp = fetch(apiURL, requestOptions).then((response) =>
-						response.json()
-					)
+					fetch(apiURL, requestOptions)
 					.then(response => response.text())
-    				.then(result => {
-					alert(result);
-					})
+    				.then(result => alert(result)
+					)
 				// }
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
