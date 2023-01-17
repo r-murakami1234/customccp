@@ -47,7 +47,7 @@ function init() {
 				phoneDiv.innerHTML = phoneNumber
 				queueDiv.innerHTML = queue
 
-				prompt('顧客情報', '顧客電話番号　' + phoneNumber + '\n')
+				prompt('顧客情報', '顧客電話番号　' + phoneNumber + '\n', '窓口　' + queue + '\n')
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
 				// 	nameDiv.innerHTML = '(番号非通知)'
