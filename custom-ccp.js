@@ -47,7 +47,7 @@ function init() {
 				phoneDiv.innerHTML = phoneNumber
 				queueDiv.innerHTML = queue
 
-				alert('顧客情報', '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
+				prompt('顧客情報', '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
 
 				// async function searchData() {
 					const apiURL =
@@ -63,11 +63,10 @@ function init() {
 						redirect: 'follow',
 					};
 				
-					fetch(apiURL, requestOptions).then((response) =>
+					resp = fetch(apiURL, requestOptions).then((response) =>
 						response.json()
 					);
-					datas.value = resp;
-					return datas.value;
+					alert(resp);
 				// }
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
