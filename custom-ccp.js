@@ -1,15 +1,13 @@
 // Amazon Connect Streams APIの初期化処理
 function init() {
-    // CCPのURL (Connectインスタンス名の部分を御自身のものに置き換えてください)
+    // CCPのURL 
     var instanceURL = "https://test-dev-001.my.connect.aws/ccp-v2";
 
     var ccpDiv = document.getElementById("ccp");
     var nameDiv = document.getElementById("name");
     var phoneDiv = document.getElementById("phone");
-    // var agentNumberDiv = document.getElementById("agentNumber");
     var queueDiv = document.getElementById("queue");
-    // var availableAgentDiv = document.getElementById("availableAgent");
-
+    
     // CCPの初期化
     connect.core.initCCP(ccpDiv, {
         ccpUrl: instanceURL,          // CCPのURLを指定 (必須項目)
@@ -31,7 +29,7 @@ function init() {
     // Contactイベント
     connect.contact(function (contact) {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
-			var conn = contact.getActiveInitialConnection();
+			// var conn = contact.getActiveInitialConnection();
 		}
 		
 		// 着信または発信が発生した時のイベント
@@ -40,23 +38,16 @@ function init() {
 			if (contact.isInbound()) {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 				var queue = contact.getQueue().name	
-				// console.log('通話着信: contactId =' + contact.getContactId() + '\n');
-				// コンタクト属性から「名前」「電話番号」「ダイヤル番号」「窓口名」「転送可能エージェント」の値を取得する
-				// var attributeMap = contact.getAttributes();
-				// var customerName = attributeMap["CustomerName"]["value"];
-				// var phoneNumber = attributeMap["PhoneNumber"]["value"];
-				// var agentNumber = attributeMap["agentNumber"]["value"];
-				// var queue = attributeMap["queue"]["value"];
-				// var availableAgent = attributeMap["availableAgent"]["value"];
-
-				// console.log('コンタクト属性を取得: customerName = \"' + customerName + '\"\n');
-				 console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
-				// console.log('コンタクト属性を取得: agentNumber = \"' + agentNumber + '\"\n');
-				 console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+				
+				// コンソールログで値が入っているか確認
+				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
+				console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
 				
 				// 名前・電話番号の表示欄に値を表示する
 				phoneDiv.innerHTML = phoneNumber
 				queueDiv.innerHTML = queue
+
+				prompt('顧客情報', '顧客電話番号　' + phoneNumber + '\n')
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
 				// 	nameDiv.innerHTML = '(番号非通知)'
