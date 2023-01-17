@@ -66,7 +66,7 @@ function init() {
 					
 					fetch(apiURL, requestOptions)
 					.then(response => response.text())
-    				.then(result => alert(result[2])
+    				.then(result => alert(result)
 					)
 				// }
 
