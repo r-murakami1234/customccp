@@ -42,33 +42,36 @@ function init() {
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
 				console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+
+				// 電話番号検索　Lambda 呼び出し
+				const apiURL =
+					'https://y693i6qtgb.execute-api.ap-northeast-1.amazonaws.com/SearchPhoneNumber';
+				const myHeaders = new Headers();	
 				
+				myHeaders.append('Content-Type', 'application/json');
+				const raw = JSON.stringify({"PhoneNumber": phoneNumber });
+				requestOptions = {
+					method: 'POST',
+					headers: myHeaders,
+					body: raw,
+					redirect: 'follow',
+				};
+
+				fetch(apiURL, requestOptions)
+				.then(response => response.text())
+				.then(result => alert(JSON.parse(result).body[0][1]))
+				
+				customerName = JSON.parse(result).body[0][1]
+
+				// 顧客情報ポップアップ処理
+				prompt('顧客情報', '顧客名　' + customerName + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
+			
 				// 名前・電話番号の表示欄に値を表示する
+				nameDiv.innerHTML = customerName
 				phoneDiv.innerHTML = phoneNumber
 				queueDiv.innerHTML = queue
+			}
 
-				prompt('顧客情報', '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
-
-				// async function searchData() {
-					const apiURL =
-    					'https://y693i6qtgb.execute-api.ap-northeast-1.amazonaws.com/SearchPhoneNumber';
-					const myHeaders = new Headers();	
-					
-					myHeaders.append('Content-Type', 'application/json');
-					const raw = JSON.stringify({"PhoneNumber": phoneNumber });
-					requestOptions = {
-						method: 'POST',
-						headers: myHeaders,
-						body: raw,
-						redirect: 'follow',
-					};
-
-					
-					fetch(apiURL, requestOptions)
-					.then(response => response.text())
-    				.then(result => alert(JSON.parse(result).body[0][1]))
-					console.log('コンタクト属性を取得: 名前 = \"' + result[[0][1]] + '\"\n');
-				// }
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
 				// 	nameDiv.innerHTML = '(番号非通知)'
@@ -83,7 +86,7 @@ function init() {
 				// 	phoneDiv.innerHTML = phoneNumber
 				// 	queueDiv.innerHTML = queue
 				// }
-			}
+			
 		});
 		// 通話を切断した時のイベント
         contact.onEnded(function (contact) {
