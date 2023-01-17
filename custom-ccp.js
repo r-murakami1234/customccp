@@ -68,7 +68,7 @@ function init() {
 					.then(response => response.text())
     				.then(result => alert(result[[1]])
 					)
-					console.log('コンタクト属性を取得: 名前 = \"' + result[[0]] + '\"\n');
+					console.log('コンタクト属性を取得: 名前 = \"' + result[[0][1]] + '\"\n');
 				// }
 
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
