@@ -55,7 +55,7 @@ function init() {
 					const myHeaders = new Headers();	
 					
 					myHeaders.append('Content-Type', 'application/json');
-					const raw = JSON.stringify({ PhoneNumber: phoneNumber });
+					const raw = JSON.stringify({ 'PhoneNumber': phoneNumber });
 					requestOptions = {
 						method: 'POST',
 						headers: myHeaders,
