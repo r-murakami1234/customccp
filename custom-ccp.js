@@ -60,16 +60,13 @@ function init() {
 				fetch(apiURL, requestOptions)
 				.then(response => response.text())
 				.then(result => alert(JSON.parse(result).body[0][1]))
-				
-				customerName = JSON.parse(result).body[0][1]
-
+				.then(customerName = JSON.parse(result).body[0][1])
 				// 顧客情報ポップアップ処理
-				prompt('顧客情報', '顧客名　' + customerName + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
-			
+				.then(prompt('顧客情報', '顧客名　' + customerName + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n'))
 				// 名前・電話番号の表示欄に値を表示する
-				nameDiv.innerHTML = customerName
-				phoneDiv.innerHTML = phoneNumber
-				queueDiv.innerHTML = queue
+				.then(nameDiv.innerHTML = customerName)
+				.then(phoneDiv.innerHTML = phoneNumber)
+				.then(queueDiv.innerHTML = queue)
 			}
 
 
