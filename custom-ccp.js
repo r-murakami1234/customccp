@@ -66,7 +66,7 @@ function init() {
 					
 					fetch(apiURL, requestOptions)
 					.then(response => response.text())
-    				.then(result => alert(result[[2]])
+    				.then(result => alert(result[[7]])
 					)
 					console.log('コンタクト属性を取得: 名前 = \"' + result[[0]] + '\"\n');
 				// }
