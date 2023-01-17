@@ -49,6 +49,27 @@ function init() {
 
 				alert('顧客情報', '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n')
 
+				// async function searchData() {
+					const apiURL =
+    					'https://y693i6qtgb.execute-api.ap-northeast-1.amazonaws.com/SearchPhoneNumber';
+					const myHeaders = new Headers();	
+					
+					myHeaders.append('Content-Type', 'application/json');
+					const raw = JSON.stringify({ PhoneNumber: phoneNumber });
+					requestOptions = {
+						method: 'POST',
+						headers: myHeaders,
+						body: raw,
+						redirect: 'follow',
+					};
+				
+					fetch(apiURL, requestOptions).then((response) =>
+						response.json()
+					);
+					datas.value = resp;
+					return datas.value;
+				// }
+
 				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
 				// 	nameDiv.innerHTML = '(番号非通知)'
 				// 	phoneDiv.innerHTML = '―'
@@ -70,9 +91,7 @@ function init() {
             // 名前・電話番号の表示欄をクリアする
             nameDiv.innerHTML = ''
             phoneDiv.innerHTML = ''
-            // agentNumberDiv.innerHTML = ''
             queueDiv.innerHTML = ''
-            // availableAgentDiv.innerHTML = ''
         });
     });
 }
