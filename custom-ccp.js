@@ -58,31 +58,21 @@ function init() {
 				};
 
 				fetch(apiURL, requestOptions)
+				//json形式で取り出す
 				.then(response => response.json())
-				.then(result => 
-					{
+				.then(result => {
 					alert('顧客情報\n顧客名' + result[0][1] + '\n顧客電話番号' + phoneNumber + '\n窓口' + queue + '\n')
+					if (phoneNumber == 'anonymous' || phoneNumber == '') {
+						nameDiv.innerHTML = '(番号非通知)'
+						phoneDiv.innerHTML = '―'
+						queueDiv.innerHTML = queue;
+					}
 					nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
 				})
-				// 顧客情報ポップアップ処理
-				// .then(prompt('顧客情報', '顧客名　' + JSON.parse(result).body[0][1] + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n'))
-				// 名前・電話番号の表示欄に値を表示する
-				// .then(nameDiv.innerHTML = JSON.parse(result).body[0][1])
-				// .then(phoneDiv.innerHTML = phoneNumber)
-				// .then(queueDiv.innerHTML = queue)
-
-				// console.log('name = \"' + customerName + '\"\n');
-				// console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
-				// console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
 			}
-
-
-				// if (phoneNumber == 'anonymous' || phoneNumber == '') {
-				// 	nameDiv.innerHTML = '(番号非通知)'
-				// 	phoneDiv.innerHTML = '―'
-				// 	queueDiv.innerHTML = queue
+				
 				// } else if (customerName == '') {
 				// 	nameDiv.innerHTML = '(登録されていません)'
 				// 	phoneDiv.innerHTML = phoneNumber
