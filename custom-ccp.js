@@ -58,10 +58,11 @@ function init() {
 				};
 
 				fetch(apiURL, requestOptions)
-				.then(response => response.text())
-				.then(result => {
-					alert('顧客情報\n顧客名' + JSON.parse(result).body[0][1] + '\n顧客電話番号' + phoneNumber + '\n窓口' + queue + '\n')
-					nameDiv.innerHTML = JSON.parse(result).body[0][1];
+				.then(response => response.json())
+				.then(result => 
+					{
+					alert('顧客情報\n顧客名' + result[0][1] + '\n顧客電話番号' + phoneNumber + '\n窓口' + queue + '\n')
+					nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
 				})
