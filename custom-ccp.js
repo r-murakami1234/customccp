@@ -59,7 +59,7 @@ function init() {
 
 				fetch(apiURL, requestOptions)
 				.then(response => response.text())
-				.then(result => alert('顧客情報', '顧客名　' + JSON.parse(result).body[0][1] + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n'))
+				.then(result => alert('顧客情報\n顧客名' + JSON.parse(result).body[0][1] + '\n顧客電話番号' + phoneNumber + '\n 窓口　' + queue + '\n'))
 				
 				// 顧客情報ポップアップ処理
 				.then(prompt('顧客情報', '顧客名　' + JSON.parse(result).body[0][1] + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n'))
