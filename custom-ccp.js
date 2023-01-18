@@ -61,12 +61,17 @@ function init() {
 				.then(response => response.text())
 				.then(result => alert(JSON.parse(result).body[0][1]))
 				.then(customerName = JSON.parse(result).body[0][1])
+
 				// 顧客情報ポップアップ処理
 				.then(prompt('顧客情報', '顧客名　' + customerName + '顧客電話番号　' + phoneNumber + '\n 窓口　' + queue + '\n'))
 				// 名前・電話番号の表示欄に値を表示する
 				.then(nameDiv.innerHTML = customerName)
 				.then(phoneDiv.innerHTML = phoneNumber)
 				.then(queueDiv.innerHTML = queue)
+
+				console.log('name = \"' + customerName + '\"\n');
+				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
+				console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
 			}
 
 
