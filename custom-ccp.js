@@ -29,7 +29,6 @@ function init() {
     // Contactイベント
     connect.contact(function (contact) {
 		if (contact.getActiveInitialConnection() && contact.getActiveInitialConnection().getEndpoint()) {
-			// var conn = contact.getActiveInitialConnection();
 		}
 		
 		// 着信または発信が発生した時のイベント
