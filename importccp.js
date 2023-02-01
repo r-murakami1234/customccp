@@ -86,9 +86,15 @@ class Contact {
 function refresh(contacts) {
     $('ol').empty();
     for(var i=0; i<contacts.length; i++) {
-        $('ol').append('</p>)
-<li onclick="call('+ i +')">' + contacts[i].display() + '</li>
-<p>');
+        $('ol').append('</p>')
+        <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
+            
+    }
+}
+    for(var i=0; i<contacts.length; i++) {
+        $('ol').append('</p>')
+            <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
+            <p>');
     }
 }
 
