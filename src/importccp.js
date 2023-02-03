@@ -83,20 +83,20 @@ class Contact {
 }
 
 // 履歴オブジェクトによる表示更新
-function refresh(contacts) {
-    $('ol').empty();
-    for(var i=0; i<contacts.length; i++) {
-        $('ol').append('</p>')
-        <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
+// function refresh(contacts) {
+//     $('ol').empty();
+//     for(var i=0; i<contacts.length; i++) {
+//         $('ol').append('</p>')
+//         <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
             
-    }
-}
-    for(var i=0; i<contacts.length; i++) {
-        $('ol').append('</p>')
-            <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
-            <p>');
-    }
-}
+//     }
+// }
+//     for(var i=0; i<contacts.length; i++) {
+//         $('ol').append('</p>')
+//             <li onclick="call('+ i +')">' + contacts[i].display() + '</li>
+//             <p>');
+//     }
+// }
 
 // 発信
 function call(n) {
