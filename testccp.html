@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="custom-ccp.css">
     <script type="text/javascript" src="connect-streams-min.js"></script>
     <script type="text/javascript" src="custom-ccp.js"></script>
-    <script type="text/javascript" src="importccp.js"></script>
+    <script type="text/javascript" src="rename.js"></script>
     <title>Amazon Connect Contact Control Panel</title>
 </head>
 
@@ -20,9 +20,11 @@
         <div class="content" id="queue"></div>
         <div class="ccp" id="ccp"></div>
     </div>
+    <div id="containerDiv" style="display: none;"></div>
+    <input id="phone_number"></button>
+    <button id="dial">発信</button>
+    <button id="hangUp">切断</button>
 
-    <center></center> 
-    
     <table>
         <tbody>
             <tr>
