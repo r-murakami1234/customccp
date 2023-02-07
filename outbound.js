@@ -20,14 +20,6 @@ connect.agent(function (agent) {
         });
     }
 });
-        // endpoint インスタンスを作成時に endpointARN と endpointId が取得されない場合は以下を実行してください
-        // var ARNs = agent.getAllQueueARNs();
-        // console.log(ARNs)
-        // ARNs で取得した endpointARN と endpointId を以下に入力してください
-        // endpoint.endpointARN = "arn:aws:connect:<REGION>:<ACCOUNT_ID>:instance/<CONNECT_INSTANCE_ID>/transfer-destination/<TRANSFER_ID>";
-        // endpoint.endpointId = "arn:aws:connect:<REGION>:<ACCOUNT_ID>:instance/<CONNECT_INSTANCE_ID>/transfer-destination/<TRANSFER_ID>";
-
-        // Amazon Connect キューインスタンスから取得することができます。
         
 
 // 切断ボタンが押されたら、電話を切る
