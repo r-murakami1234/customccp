@@ -1,5 +1,5 @@
 // Amazon Connect Streams APIの初期化処理
-
+function init() {
     // CCPのURL 
     var instanceURL = "https://test-dev-001.my.connect.aws/ccp-v2";
 
@@ -19,7 +19,6 @@
             allowFramedSoftphone: true    // ソフトフォンのコンポーネントをiframeで埋め込むことを許可する
         }
     });
-function init() {
     // 発信ボタンを押すと、input フォームに入力された電話番号へ発信
     connect.agent(function (agent) {
         document.getElementById('dial').onclick = function() {
