@@ -21,7 +21,7 @@ function init() {
     });
     // 発信ボタンを押すと、input フォームに入力された電話番号へ発信
     connect.agent(function (agent) {
-        document.getElementById('dial').onclick = function() {
+        document.getElementById('dial2').onclick = function() {
             var phoneNumber = document.getElementById('phone_number').value;
             var phoneNumber2 = document.getElementById('dial2').value;
             phoneNumber = '+81' + phoneNumber.slice(1);
