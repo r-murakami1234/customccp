@@ -1,7 +1,7 @@
 // 発信ボタンを押すと、input フォームに入力された電話番号へ発信
 connect.agent(function (agent) {
     document.getElementById('dial').onclick = function() {
-        var phoneNumber = document.getElementById('phone_number').value;
+        var phoneNumber = document.getElementById('phone_number');
         phoneNumber = '+81' + phoneNumber.slice( 1 );
         console.log(phoneNumber);
 
@@ -20,7 +20,6 @@ connect.agent(function (agent) {
         });
     }
 });
-        
 
 // 切断ボタンが押されたら、電話を切る
 connect.contact(function (contact) {
