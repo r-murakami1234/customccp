@@ -22,12 +22,14 @@ function init() {
     // 発信ボタンを押すと、input フォームに入力された電話番号へ発信
     connect.agent(function (agent) {
         document.getElementById('dial').onclick = function() {
-            var phoneNumber = document.getElementById('dial');
-            //phoneNumber = '+81' + phoneNumber.slice(1);
+            var phoneNumber = document.getElementById('phone_number').value;
+            var phoneNumber2 = document.getElementById('dial2').value;
+            phoneNumber = '+81' + phoneNumber.slice(1);
             console.log(phoneNumber);
+            console.log(phoneNumber2);
 
             // endpoint インスタンス作成　
-            var endpoint = connect.Endpoint.byPhoneNumber(phoneNumber);
+            var endpoint = connect.Endpoint.byPhoneNumber(phoneNumber2);
 
             var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
 
