@@ -44,7 +44,7 @@ function init() {
     // クリック発信
     connect.agent(function (agent) {
         document.getElementById('clickDial').onclick = function() {
-            var phoneNumber2 = document.getElementById('clickDial');
+            var phoneNumber2 = document.getElementById('clickDial').value;
             console.log(phoneNumber2);
 
             // endpoint インスタンス作成　
