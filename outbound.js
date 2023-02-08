@@ -47,7 +47,7 @@ function init() {
             var phoneNumber2 = document.getElementById('clickDial').value;
             console.log(phoneNumber2);
 
-            // endpoint インスタンス作成　
+            // endpoint インスタンス作成
             var endpoint = connect.Endpoint.byPhoneNumber(phoneNumber2);
 
             var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
