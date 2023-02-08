@@ -43,8 +43,8 @@ function init() {
     });
     // クリック発信
     connect.agent(function (agent) {
-        document.getElementsByClassName('clickDial').onclick = function() {
-            var clickNumber = document.getElementsByClassName('clickDial').value;
+        document.getElementsById('clickDial').onclick = function() {
+            var clickNumber = document.getElementById('clickDial').value;
             console.log(clickNumber);
 
             // endpoint インスタンス作成　
