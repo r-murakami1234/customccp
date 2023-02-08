@@ -53,7 +53,7 @@ function init() {
             var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
 
             agent.connect(endpoint, {
-                queueARN: queueArn,
+                // queueARN: queueArn,
                 success: function() { console.log("outbound call connected"); },
                 failure: function(err) {
                     console.log("outbound call connection failed");
