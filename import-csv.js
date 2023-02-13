@@ -2,6 +2,6 @@
 
     function addanswer() {
         fetch(importURL, requestOptions)
-        answer = document.getElementById("answer");
-        answer.innertext = "CSVファイルを更新しました。"
+        then.answer = document.getElementById("answer");
+        then.answer.innertext = "CSVファイルを更新しました。"
     }

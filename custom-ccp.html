@@ -5,7 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="custom-ccp.css">
 		<script type="text/javascript" src="connect-streams-min.js"></script>
 		<script type="text/javascript" src="outbound.js"></script>
-		<script type="text/javascript" src="import-csv.js"></script>
 		<title>Amazon Connect Contact Control Panel</title>
 	</head>
 	<body onload="init()">
@@ -15,7 +14,7 @@
 		<button id="dial">発信</button>
 		<button id="hangUp">切断</button>
 		<button id="clickDial" value="+818025311477">08025311477</button>
+		<input type="button" value="更新" onclick="addanswer()"/>
+		<div id="answer"></div>
 	</body>
-	<input type="button" value="更新" onclick="addanswer()"/>
-	<div id="answer"></div>
 </html>
