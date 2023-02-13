@@ -32,7 +32,7 @@ function init() {
 
             agent.connect(endpoint, {
                 queueARN: agent.getAllQueueARNs() [0],
-                success: function() { console.log("outbound call connected"); },
+                success: function() { console.log("outbound call connected", queueARN); },
                 failure: function(err) {
                     console.log("outbound call connection failed");
                     console.log(err);
@@ -52,7 +52,7 @@ function init() {
 
             agent.connect(endpoint, {
                 queueARN: agent.getAllQueueARNs() [0],
-                success: function() { console.log("outbound call connected"); },
+                success: function() { console.log("outbound call connected", queueARN); },
                 failure: function(err) {
                     console.log("outbound call connection failed");
                     console.log(err);
