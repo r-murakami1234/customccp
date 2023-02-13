@@ -28,11 +28,10 @@ function init() {
             
             // endpoint インスタンス作成　
             var endpoint = connect.Endpoint.byPhoneNumber(phoneNumber);
-
-            var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
+            // var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
 
             agent.connect(endpoint, {
-                queueARN: queueArn,
+                queueARN: agent.getAllQueueARNs() [0],
                 success: function() { console.log("outbound call connected"); },
                 failure: function(err) {
                     console.log("outbound call connection failed");
@@ -49,11 +48,10 @@ function init() {
 
             // endpoint インスタンス作成
             var endpoint = connect.Endpoint.byPhoneNumber(clickNumber);
-
             //var queueArn = "arn:aws:connect:ap-northeast-1:831461333044:instance/63eb6a17-a9da-4caf-a4bf-8ad2f5cf887e/queue/fff1d521-eedb-4fdd-9e41-d355e36a6789";
 
             agent.connect(endpoint, {
-                // queueARN: queueArn,
+                queueARN: agent.getAllQueueARNs() [0],
                 success: function() { console.log("outbound call connected"); },
                 failure: function(err) {
                     console.log("outbound call connection failed");
@@ -82,11 +80,12 @@ function init() {
         };
     });
 
-    var importURL = "https://gntsf0si0f.execute-api.ap-northeast-1.amazonaws.com/POST"
-
-    function addanswer() {
+    // エージェントがログインした際に呼び出す
+    connect.agent(function (agent) {
+        var importURL = "https://gntsf0si0f.execute-api.ap-northeast-1.amazonaws.com/POST"
+        agent = new connect.agent
         fetch(importURL, requestOptions)
         then.answer = document.getElementById("answer");
         then.answer.innertext = "CSVファイルを更新しました。"
-    }
+    });    
 }
