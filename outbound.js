@@ -81,17 +81,17 @@ function init() {
     });
 
     // エージェントがログインした際に呼び出す
-    connect.agent(function (agent) {
-        document.getElementById('csvimport').onclick = function() {
-            const importURL = "https://gntsf0si0f.execute-api.ap-northeast-1.amazonaws.com/POST"
-            agent = new connect.agent
-            requestOptions = {
-                method: 'POST',
-                redirect: 'follow',
-            };
-            answer = document.getElementById("answer");
-            fetch(importURL, requestOptions)
-            then.answer.innertext = "CSVファイルを更新しました。"
-        }
-    });    
+    // connect.agent(function (agent) {
+    //     document.getElementById('csvimport').onclick = function() {
+    //         const importURL = "https://gntsf0si0f.execute-api.ap-northeast-1.amazonaws.com/POST"
+    //         agent = new connect.agent
+    //         requestOptions = {
+    //             method: 'POST',
+    //             redirect: 'follow',
+    //         };
+    //         answer = document.getElementById("answer");
+    //         fetch(importURL, requestOptions)
+    //         then.answer.innertext = "CSVファイルを更新しました。"
+    //     }
+    // });    
 }
