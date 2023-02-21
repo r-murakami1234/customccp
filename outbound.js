@@ -40,7 +40,7 @@ function init() {
             });
         }
     });
-    // クリック発信
+    // クリック発信用
     connect.agent(function (agent) {
         document.getElementById('clickDial').onclick = function() {
             var clickNumber = document.getElementById('clickDial').value;

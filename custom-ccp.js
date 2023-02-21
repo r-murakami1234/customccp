@@ -7,6 +7,7 @@ function init() {
     var nameDiv = document.getElementById("name");
     var phoneDiv = document.getElementById("phone");
     var queueDiv = document.getElementById("queue");
+	var dialDiv = document.getElementById("dial");
     
     // CCPの初期化
     connect.core.initCCP(ccpDiv, {
@@ -36,16 +37,18 @@ function init() {
         	// 着信時の場合のみ
 			if (contact.isInbound()) {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
-				var queue = contact.getQueue().name	
+				var queue = contact.getQueue().name;
+				var dialNumber = contact.getAttributes().dialNumber
 				
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
 				console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
+				console.log('コンタクト属性を取得: dialNumber = \"' + dialNumber + '\"\n');
 
 				// 電話番号検索　Lambda 呼び出し
 				const apiURL =
 					'https://y693i6qtgb.execute-api.ap-northeast-1.amazonaws.com/SearchPhoneNumber';
-				const myHeaders = new Headers();	
+				const myHeaders = new Headers();
 				
 				myHeaders.append('Content-Type', 'application/json');
 				const raw = JSON.stringify({"PhoneNumber": phoneNumber });
@@ -65,10 +68,12 @@ function init() {
 						nameDiv.innerHTML = '(番号非通知)'
 						phoneDiv.innerHTML = '―'
 						queueDiv.innerHTML = queue;
+						dialDiv.innerHTML = dialNumber;
 					}
 					nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
+					dialDiv.innerHTML = dialNumber;
 				})
 			}
 				
@@ -90,6 +95,7 @@ function init() {
             nameDiv.innerHTML = ''
             phoneDiv.innerHTML = ''
             queueDiv.innerHTML = ''
+			dialDiv.innerHTML = dialNumber;
         });
     });
 }
