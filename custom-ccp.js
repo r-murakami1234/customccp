@@ -63,7 +63,7 @@ function init() {
 				//json形式で取り出す
 				.then(response => response.json())
 				.then(result => {
-					alert('顧客情報\n顧客名' + result[0][1] + '\n顧客電話番号' + phoneNumber + '\n窓口' + queue + '\n')
+					//alert('顧客情報\n顧客名' + result[0][1] + '\n顧客電話番号' + phoneNumber + '\n窓口' + queue + '\n')
 					if (phoneNumber == 'anonymous' || phoneNumber == '') {
 						nameDiv.innerHTML = '(番号非通知)'
 						phoneDiv.innerHTML = '―'
