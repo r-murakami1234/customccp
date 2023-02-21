@@ -38,7 +38,7 @@ function init() {
 			if (contact.isInbound()) {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 				var queue = contact.getQueue().name;
-				var dialNumber = contact.getAttributes().dialNumber
+				var dialNumber = contact.getAttributes();
 				
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
@@ -68,12 +68,12 @@ function init() {
 						nameDiv.innerHTML = '(番号非通知)'
 						phoneDiv.innerHTML = '―'
 						queueDiv.innerHTML = queue;
-						dialDiv.innerHTML = dialNumber;
+						// dialDiv.innerHTML = dialNumber;
 					}
 					nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
-					dialDiv.innerHTML = dialNumber;
+					// dialDiv.innerHTML = dialNumber;
 				})
 			}
 				
