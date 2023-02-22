@@ -37,7 +37,6 @@ function init() {
         	// 着信時の場合のみ
 			if (contact.isInbound()) {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
-				phoneNumber = '0' + phoneNumber.slice(3);
 				var queue = contact.getQueue().name;
 				var attributeMap = contact.getAttributes();
 				var dialNumber = attributeMap["dialNumber"]["value"];
@@ -75,6 +74,7 @@ function init() {
 						// dialDiv.innerHTML = dialNumber;
 					}
 					// nameDiv.innerHTML = result[0][1];
+					phoneNumber = '0' + phoneNumber.slice(3);
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
 					dialDiv.innerHTML = dialNumber;
