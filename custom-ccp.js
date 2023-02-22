@@ -39,7 +39,7 @@ function init() {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 				var queue = contact.getQueue().name;
 				var attributeMap = contact.getAttributes();
-				var dialNumber = contact.getAttributes();
+				var dialNumber = attributeMap["dialNumber"]["value"];
 				
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
