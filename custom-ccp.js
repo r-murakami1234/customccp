@@ -70,7 +70,7 @@ function init() {
 						queueDiv.innerHTML = queue;
 						// dialDiv.innerHTML = dialNumber;
 					}
-					nameDiv.innerHTML = result[0][1];
+					// nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
 					// dialDiv.innerHTML = dialNumber;
