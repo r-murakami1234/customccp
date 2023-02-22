@@ -38,12 +38,14 @@ function init() {
 			if (contact.isInbound()) {
 				var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 				var queue = contact.getQueue().name;
+				var attributeMap = contact.getAttributes();
 				var dialNumber = contact.getAttributes();
 				
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
 				console.log('コンタクト属性を取得: queue = \"' + queue + '\"\n');
 				console.log('コンタクト属性を取得: dialNumber = \"' + dialNumber + '\"\n');
+				console.log('コンタクト属性を取得: attributeMap = \"' + attributeMap + '\"\n');
 
 				// 電話番号検索　Lambda 呼び出し
 				const apiURL =
@@ -73,7 +75,7 @@ function init() {
 					// nameDiv.innerHTML = result[0][1];
 					phoneDiv.innerHTML = phoneNumber;
 					queueDiv.innerHTML = queue;
-					// dialDiv.innerHTML = dialNumber;
+					dialDiv.innerHTML = dialNumber;
 				})
 			}
 				
@@ -95,7 +97,7 @@ function init() {
             nameDiv.innerHTML = ''
             phoneDiv.innerHTML = ''
             queueDiv.innerHTML = ''
-			dialDiv.innerHTML = dialNumber;
+			dialDiv.innerHTML = '';
         });
     });
 }
