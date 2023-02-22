@@ -40,6 +40,7 @@ function init() {
 				var queue = contact.getQueue().name;
 				var attributeMap = contact.getAttributes();
 				var dialNumber = attributeMap["dialNumber"]["value"];
+				dialNumber = '0' + dialNumber.slice(3);
 				
 				// コンソールログで値が入っているか確認
 				console.log('コンタクト属性を取得: phoneNumber = \"' + phoneNumber + '\"\n');
